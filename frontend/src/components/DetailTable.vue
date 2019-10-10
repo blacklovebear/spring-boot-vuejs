@@ -26,7 +26,7 @@
         </b-thead>
         <b-tbody>
 
-            <b-tr  v-for="(item, index) in items_computed" :key='item.id' >
+            <b-tr v-for="(item, index) in items_computed" :key='item.id' >
                 <b-td>{{item.id}}</b-td>
                 <b-td>{{item.title}}</b-td>
                 <b-td>{{item.price}}</b-td>
@@ -65,12 +65,14 @@
 
 <script>
     export default {
+        name: 'detailTable',
+
         data() {
             return {
             }
         },
 
-        props
+        props: ["items"],
 
         computed: {
             items_computed: function () {
