@@ -27,9 +27,9 @@
         <b-tbody>
 
             <b-tr v-for="(item, index) in items_computed" :key='item.id' >
-                <b-td>{{item.id}}</b-td>
-                <b-td>{{item.title}}</b-td>
-                <b-td>{{item.price}}</b-td>
+                <b-td>{{jobInfo_list[index].id}}</b-td>
+                <b-td>{{jobInfo_list[index].title}}</b-td>
+                <b-td>{{jobInfo_list[index].price}}</b-td>
 
                 <b-td>{{item.plan_c}}</b-td>
                 <b-td>{{item.plan_n}}</b-td>
@@ -72,18 +72,22 @@
             }
         },
 
-        props: ["items"],
+        props: ["items", "jobInfo_list"],
 
         computed: {
             items_computed: function () {
-                return this.items.detail.map(item =>  {
-                    item.plan_n = item.price * item.plan_c;
-                    item.real_n = item.price * item.real_c;
+                let result = []
+
+                for (let [i, item] of this.items.detail.entries()) {
+                    item.plan_n = this.jobInfo_list[i].price * item.plan_c;
+                    item.real_n = this.jobInfo_list[i].price * item.real_c;
 
                     item.diff_c = item.real_c - item.plan_c;
                     item.diff_n = item.real_n - item.plan_n;
-                    return item;
-                });
+                    result.push(item);
+                }
+
+                return result
             },
 
 
