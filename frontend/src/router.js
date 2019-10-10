@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Hello from '@/components/Hello'
+import Table from '@/components/Table'
 import Service from '@/components/Service'
 import Bootstrap from '@/components/Bootstrap'
 import User from '@/components/User'
@@ -19,6 +20,7 @@ const router = new Router({
         { path: '/bootstrap', component: Bootstrap },
         { path: '/user', component: User },
         { path: '/login', component: Login },
+        { path: '/table', component: Table },
         {
             path: '/protected',
             component: Protected,
