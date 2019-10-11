@@ -13,6 +13,9 @@
       <b-btn variant="success" type="submit">Login</b-btn>
       <p v-if="error" class="error">Bad login information</p>
     </form>
+
+     <input type="number" class="col-md-2 form-control"  v-model.number="number">
+     {{ number + 1 }}
   </div>
 
 </template>
@@ -26,6 +29,7 @@ export default {
       loginError: false,
       user: '',
       password: '',
+      number:10,
       error: false,
       errors: []
     }

@@ -1,6 +1,5 @@
 <template>
     <div>
-
         <div class="row">
                 <div class="col-md-3">
                     <b-table striped hover :items="project_info_computed" thead-class="hidden_header"></b-table>
@@ -10,7 +9,7 @@
                     <div class="form-group" v-for="jobInfo in jobInfo_list">
                         <div class="row">
                             <label class="col-md-2" :for="jobInfo.title">{{jobInfo.title}}</label>
-                            <input type="text" class="col-md-2 form-control" :id="jobInfo.title" v-model="jobInfo.price">
+                            <input type="text" class="col-md-2 form-control" :id="jobInfo.title" v-model.number="jobInfo.price">
                         </div>
                             
                     </div>
@@ -45,6 +44,7 @@
                         total_reel_n += this.jobInfo_list[k].price * detail.real_c;
 
                     }
+
                     total_billing += item.billing
                     total_cost += item.cost
                 }
@@ -66,12 +66,12 @@
                 return [
                     {name: '项目名称', value:    "珠海中海金鼎星筑苑"},
                     {name: '合约额', value:  262.10},
-                    {name: '自开工累计应取费', value: this.items_total_computed.total_plan_n },
-                    {name: '自开工累计已取费', value: this.items_total_computed.total_reel_n },
-                    {name: '自开工累计未取费', value: this.items_total_computed.total_diff_n },
-                    {name: '自开工累计开票', value: this.items_total_computed.total_billing },
-                    {name: '自开工累计成本', value: this.items_total_computed.total_cost },
-                    {name: '结余', value: this.items_total_computed.total_balance }
+                    {name: '自开工累计应取费', value: this.items_total_computed.total_plan_n.toFixed(2)},
+                    {name: '自开工累计已取费', value: this.items_total_computed.total_reel_n.toFixed(2)},
+                    {name: '自开工累计未取费', value: this.items_total_computed.total_diff_n.toFixed(2)},
+                    {name: '自开工累计开票', value: this.items_total_computed.total_billing.toFixed(2)},
+                    {name: '自开工累计成本', value: this.items_total_computed.total_cost.toFixed(2)},
+                    {name: '结余', value: this.items_total_computed.total_balance.toFixed(2)}
                 ]
             
             }

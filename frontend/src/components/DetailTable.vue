@@ -29,18 +29,22 @@
             <b-tr v-for="(item, index) in items_computed" :key='item.id' >
                 <b-td>{{jobInfo_list[index].id}}</b-td>
                 <b-td>{{jobInfo_list[index].title}}</b-td>
-                <b-td>{{jobInfo_list[index].price}}</b-td>
+                <b-td>{{jobInfo_list[index].price.toFixed(2)}}</b-td>
 
-                <b-td>{{item.plan_c}}</b-td>
-                <b-td>{{item.plan_n}}</b-td>
-                <b-td>{{item.real_c}}</b-td>
-                <b-td>{{item.real_n}}</b-td>
-                <b-td>{{item.diff_c}}</b-td>
-                <b-td>{{item.diff_n}}</b-td>
+                <b-td>{{item.plan_c.toFixed(2)}}</b-td>
+                <b-td>{{item.plan_n.toFixed(2)}}</b-td>
+                <b-td>{{item.real_c.toFixed(2)}}</b-td>
+                <b-td>{{item.real_n.toFixed(2)}}</b-td>
+                <b-td>{{item.diff_c.toFixed(2)}}</b-td>
+                <b-td>{{item.diff_n.toFixed(2)}}</b-td>
 
                 <!-- 还不清楚计算逻辑 -->
-                <b-td v-if="index == 0" style="vertical-align: middle" :rowspan="items_computed.length + 1">{{items.billing}}</b-td>
-                <b-td v-if="index == 0" style="vertical-align: middle" :rowspan="items_computed.length + 1">{{items.cost}}</b-td>
+                <b-td v-if="index == 0" style="vertical-align: middle" :rowspan="items_computed.length + 1">
+                    <input type="text" class="form-control" v-model.number="items.billing">
+                </b-td>
+                <b-td v-if="index == 0" style="vertical-align: middle" :rowspan="items_computed.length + 1">
+                    <input type="text" class="form-control" v-model.number="items.cost">
+                </b-td>
                 <b-td v-if="index == 0" style="vertical-align: middle" :rowspan="items_computed.length + 1">{{items.billing - items.cost}}</b-td>
             </b-tr>
 
@@ -48,12 +52,12 @@
             <b-tr >
                 <b-td colspan="3">合计</b-td>
 
-                <b-td>{{items_computed_sum.plan_c_sum}}</b-td>
-                <b-td>{{items_computed_sum.plan_n_sum}}</b-td>
-                <b-td>{{items_computed_sum.real_c_sum}}</b-td>
-                <b-td>{{items_computed_sum.real_n_sum}}</b-td>
-                <b-td>{{items_computed_sum.diff_c_sum}}</b-td>
-                <b-td>{{items_computed_sum.diff_n_sum}}</b-td>
+                <b-td>{{items_computed_sum.plan_c_sum.toFixed(2)}}</b-td>
+                <b-td>{{items_computed_sum.plan_n_sum.toFixed(2)}}</b-td>
+                <b-td>{{items_computed_sum.real_c_sum.toFixed(2)}}</b-td>
+                <b-td>{{items_computed_sum.real_n_sum.toFixed(2)}}</b-td>
+                <b-td>{{items_computed_sum.diff_c_sum.toFixed(2)}}</b-td>
+                <b-td>{{items_computed_sum.diff_n_sum.toFixed(2)}}</b-td>
             </b-tr>
 
 
@@ -131,5 +135,9 @@ li {
 
 a {
   color: #42b983;
+}
+input.form-control  {
+    width: 30px;
+    padding: 5px;
 }
 </style>
