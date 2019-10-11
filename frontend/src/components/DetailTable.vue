@@ -78,7 +78,7 @@
             items_computed: function () {
                 let result = []
 
-                for (let [i, item] of this.items.detail.entries()) {
+                for (let [i, item] of this.items.details.entries()) {
                     item.plan_n = this.jobInfo_list[i].price * item.plan_c;
                     item.real_n = this.jobInfo_list[i].price * item.real_c;
 
