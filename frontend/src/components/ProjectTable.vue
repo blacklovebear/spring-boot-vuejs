@@ -5,15 +5,36 @@
                     <b-table striped hover :items="project_info_computed" thead-class="hidden_header"></b-table>
                 </div>
 
-                <div class="col-md-9">
+                <div class="col-md-3">
                     <div class="form-group" v-for="jobInfo in jobInfo_list">
                         <div class="row">
-                            <label class="col-md-2" :for="jobInfo.title">{{jobInfo.title}}</label>
-                            <input type="text" class="col-md-2 form-control" :id="jobInfo.title" v-model.number="jobInfo.price">
+                            <label class="col-md-6" :for="jobInfo.title">{{jobInfo.title}}</label>
+                            <input type="text" class="col-md-6 form-control" :id="jobInfo.title" v-model.number="jobInfo.price">
                         </div>
                             
                     </div>
                 </div>
+
+                <div class="col-md-3">
+                    <div class="row form-group">
+                        <label class="col-md-6" for="month">月份</label>
+                        <input type="text" class="col-md-6 form-control" id="month" v-model="month">
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-md-6" for="billing">开票</label>
+                        <input type="text" class="col-md-6 form-control" id="billing" v-model.number="billing">
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-md-6" for="cost">成本</label>
+                        <input type="text" class="col-md-6 form-control" id="cost" v-model.number="cost">
+                    </div>
+
+                    <div class="row form-group">
+                        <button type="button" class="btn btn-success offset-md-6 col-md-6" v-on:click="addMonth">增加月份</button>
+                    </div>
+                </div>
+
+                
 
         </div>
 
@@ -28,6 +49,26 @@
     export default {
         components:{
             DetailTable
+        },
+
+        methods: {
+            addMonth: function (event) {
+                let month_data =  {
+                        billing: this.billing,
+                        cost: this.cost,
+                        month: this.month,
+                        details: [
+                            {plan_c:1, real_c:2,},
+                            {plan_c:1, real_c:2,},
+                            {plan_c:1, real_c:2,},
+                            {plan_c:1, real_c:2,},
+                            {plan_c:1, real_c:2,},
+                            {plan_c:1, real_c:2,},
+                        ]
+                    }
+
+                this.jobInfo_items_list.push(month_data)
+            }
         },
 
         props: ["jobInfo_list", "project_info", "jobInfo_items_list"],
@@ -81,7 +122,9 @@
 
         data() {
             return {
-
+                month:"2019年10月",
+                billing: 10,
+                cost: 9
             }
         },
 
