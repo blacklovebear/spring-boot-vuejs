@@ -33,6 +33,7 @@
                     {
                         billing: 2,
                         cost:3,
+                        month: "2019年7月",
                         details: [
                             {plan_c:1, real_c:2,},
                             {plan_c:1, real_c:2,},
@@ -46,6 +47,7 @@
                     {
                         billing: 4,
                         cost:5,
+                        month: "2019年8月",
                         details: [
                             {plan_c:2,  real_c:1,},
                             {plan_c:2,  real_c:1,},
@@ -59,6 +61,7 @@
                     {
                         billing:7,
                         cost:85,
+                        month: "2019年9月",
                         details: [
                             {plan_c:3,  real_c:4,},
                             {plan_c:3,  real_c:4,},

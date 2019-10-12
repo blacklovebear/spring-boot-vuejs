@@ -1,11 +1,11 @@
 <template>
     <b-table-simple hover small caption-top responsive>
-        <b-thead head-variant="light">
+        <b-thead head-variant="dark">
             <b-tr >
                 <b-th style="vertical-align: middle" rowspan="3">序号</b-th>
                 <b-th style="vertical-align: middle" rowspan="3">岗位名称</b-th>
                 <b-th style="vertical-align: middle" rowspan="3">人月综合单价</b-th>
-                <b-th colspan="12">2019年7月</b-th>
+                <b-th colspan="12">{{items.month}}</b-th>
             </b-tr>
             <b-tr>
                 <b-th coloffset="3" colspan="2">计划</b-th>
