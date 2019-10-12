@@ -1,26 +1,29 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Hello from '@/components/Hello'
-import Table from '@/components/Table'
 import Service from '@/components/Service'
 import Bootstrap from '@/components/Bootstrap'
 import User from '@/components/User'
 import Login from '@/components/Login'
 import Protected from '@/components/Protected'
-
 import store from './store'
+
+import Project1 from '@/components/Project1'
+import Project2 from '@/components/Project2'
 
 Vue.use(Router);
 
 const router = new Router({
     mode: 'history', // uris without hashes #, see https://router.vuejs.org/guide/essentials/history-mode.html#html5-history-mode
     routes: [
-        { path: '/', component: Hello },
+        { path: '/', component: Project2 },
         { path: '/callservice', component: Service },
         { path: '/bootstrap', component: Bootstrap },
         { path: '/user', component: User },
         { path: '/login', component: Login },
-        { path: '/table', component: Table },
+
+        { path: '/project1', component: Project1 },
+        { path: '/project2', component: Project2 },
         {
             path: '/protected',
             component: Protected,

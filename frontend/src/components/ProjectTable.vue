@@ -17,7 +17,7 @@
 
         </div>
 
-        <div v-for="items in items_list" class="col-md-6">
+        <div v-for="items in jobInfo_items_list" class="col-md-6">
             <DetailTable :items = "items" :jobInfo_list = "jobInfo_list"/>
         </div>
     </div>
@@ -30,6 +30,8 @@
             DetailTable
         },
 
+        props: ["jobInfo_list", "project_info", "jobInfo_items_list"],
+
         computed: {
              items_total_computed: function () {
                 var total_plan_n = 0
@@ -38,7 +40,7 @@
                 var total_billing = 0
                 var total_cost = 0
 
-                for (let [i, item] of this.items_list.entries()) {
+                for (let [i, item] of this.jobInfo_items_list.entries()) {
                     for (let [k, detail] of item.details.entries()) {
                         total_plan_n += this.jobInfo_list[k].price * detail.plan_c;
                         total_reel_n += this.jobInfo_list[k].price * detail.real_c;
@@ -64,8 +66,8 @@
 
             project_info_computed : function () {
                 return [
-                    {name: '项目名称', value:    "珠海中海金鼎星筑苑"},
-                    {name: '合约额', value:  262.10},
+                    {name: '项目名称', value: this.project_info.project_name},
+                    {name: '合约额', value:  this.project_info.contract_amount},
                     {name: '自开工累计应取费', value: this.items_total_computed.total_plan_n.toFixed(2)},
                     {name: '自开工累计已取费', value: this.items_total_computed.total_reel_n.toFixed(2)},
                     {name: '自开工累计未取费', value: this.items_total_computed.total_diff_n.toFixed(2)},
@@ -79,55 +81,7 @@
 
         data() {
             return {
-                jobInfo_list : [
-                            {id:1, title:"总监", price:2.82},
-                            {id:2, title:"土建工程师", price: 1.36},
-                            {id:3, title:"机电工程师", price: 1.58},
-                            {id:4, title:"测量工程师", price: 1.02},
-                            {id:5, title:"园林工程师", price: 1.02},
-                            {id:6, title:"资料员", price:  0.90},
-                        ],
 
-                items_list: [
-                    {
-                        billing: 2,
-                        cost:3,
-                        details: [
-                            {plan_c:1, real_c: 0,},
-                            {plan_c:1, real_c: 0,},
-                            {plan_c:0, real_c: 1,},
-                            {plan_c:1, real_c:0,},
-                            {plan_c:0, real_c:0,},
-                            {plan_c:1, real_c: 0,},
-                        ]
-                    },
-
-                    {
-                        billing: 4,
-                        cost:5,
-                        details: [
-                            {plan_c:1,  real_c: 0,},
-                            {plan_c:1,  real_c: 1,},
-                            {plan_c:0,  real_c: 0,},
-                            {plan_c:3,  real_c:0,},
-                            {plan_c:4,  real_c:0,},
-                            {plan_c:5,  real_c: 0,},
-                        ]
-                    },
-
-                    {
-                        billing:7,
-                        cost:85,
-                        details: [
-                            {plan_c:1,  real_c: 0,},
-                            {plan_c:1,  real_c: 1,},
-                            {plan_c:0,  real_c: 0,},
-                            {plan_c:3,  real_c:0,},
-                            {plan_c:4,  real_c:0,},
-                            {plan_c:5,  real_c: 0,},
-                        ]
-                    },
-                ],
             }
         },
 
