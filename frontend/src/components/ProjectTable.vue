@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <b-table striped hover :items="project_info_computed" thead-class="hidden_header"></b-table>
                 </div>
 
